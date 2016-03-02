@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="css/geral.css" rel="stylesheet">
+</head>
+<body>
+  <script type="text/html" id="fcv">
+    <p>
+    <label>
+      Descricao:
+      <span>{Descricao}</span>
+    </label>
+    </p>
+    <p>
+    <label>
+      Veículo: <select autofocus="autofocus"><option value="-1">Selecione</option>{selectVeiculos}</select>
+    </label>
+    </p>
+    <p>
+      <input type="submit" value="salvar"/>
+      <a href="Index.html">retornar</a>
+    </p>
+  </script>
+  <script type="text/html" id="veiculo">
+    <option value="{Codigo}">{Identificador}</option>
+  </script>
+  <form action="#" id="edit" class="center">
+  </form>
+
+  <script src="js/helpers.js"></script>
+  <script src="js/UrlParams.js"></script>
+  <script src="js/EditParams.js"></script>
+  <script src="js/Model/ModelBase.js"></script>
+  <script src="js/Model/FcvModel.js"></script>
+  <script src="js/Model/VeiculoModel.js"></script>
+  <script src="js/painelDeFrotasEditLoad.js"></script>
+</body>
+</html>

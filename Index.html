@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="css/geral.css" rel="stylesheet">
+</head>
+<body>
+  <script type="text/html" id="linha-fcv">
+    <li>
+      <label>
+        <span>{Descricao}</span>
+      </label>
+      <a href="Edit.html?codigoLTJ={Codigo}">Avulsa</a>
+    </li>
+  </script>
+  <div  class="center">
+  <form action="javascript:renderLinhas();">
+    <label>Filtrar: <input type="search" id="txtFiltrar" autofocus="autofocus" autocomplete="on" /></label>
+    <input type="submit" value="filtrar" id="btnFiltrar" />
+  </form>
+  <ol id="fcvs"></ol>
+  </div>
+  <script src="js/helpers.js"></script>
+  <script src="js/Model/ModelBase.js"></script>
+  <script src="js/Model/FcvModel.js"></script>
+  <script src="js/Controller/FcvFilterController.js"></script>
+  <script src="js/painelDeFrotasLoad.js"></script>
+</body>
+</html>
