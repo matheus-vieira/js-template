@@ -6,22 +6,21 @@ function FcvModel(p) {
     // inherit instance properties
     ModelBase.apply(this, o);
 
-    mSelf.Codigo = checkValue(o.Codigo, -1);
+    mSelf.Id = checkValue(o.Id, -1);
 
-    mSelf.Nome = checkValue(o.Nome, "");
-    mSelf.Linha = checkValue(o.Linha, "");
-    mSelf.Tabela = checkValue(o.Tabela, "");
-    mSelf.Jornada = checkValue(o.Jornada, "");
+    mSelf.Name = checkValue(o.Name, "");
+    mSelf.Line = checkValue(o.Line, "");
+    mSelf.Table = checkValue(o.Table, "");
+    mSelf.Journey = checkValue(o.Journey, "");
 
-    Object.defineProperty(mSelf, 'Descricao', {
+    Object.defineProperty(mSelf, 'Description', {
         enumerable: true,
         get: function() {
             return [
-                this.Linha,
-                this.Tabela,
-                this.Jornada
-            ].join(" / ")
-            + " - " + this.Nome;
+                this.Line,
+                this.Table,
+                this.Journey
+            ].join(" / ") + " - " + this.Name;
         }
     });
 }

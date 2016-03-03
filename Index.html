@@ -6,12 +6,12 @@
   <link href="css/geral.css" rel="stylesheet">
 </head>
 <body>
-  <script type="text/html" id="linha-fcv">
+  <script type="text/html" id="tpl-fcv">
     <li>
       <label>
-        <span>{Descricao}</span>
+        <span>{Description}</span>
       </label>
-      <a href="Edit.html?codigoLTJ={Codigo}">Avulsa</a>
+      <a href="Edit.html?fcvId={Id}">Avulsa</a>
     </li>
   </script>
   <div  class="center">
@@ -21,10 +21,12 @@
   </form>
   <ol id="fcvs"></ol>
   </div>
-  <script src="js/helpers.js"></script>
+  <script src="js/helper/checkValue.js"></script>
+  <script src="js/helper/getTemplate.js"></script>
+  <script src="js/helper/supplant.js"></script>
   <script src="js/Model/ModelBase.js"></script>
   <script src="js/Model/FcvModel.js"></script>
   <script src="js/Controller/FcvFilterController.js"></script>
-  <script src="js/painelDeFrotasLoad.js"></script>
+  <script src="js/View/painelDeFrotas/onload.js"></script>
 </body>
 </html>
