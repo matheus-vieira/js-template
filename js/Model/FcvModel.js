@@ -14,7 +14,6 @@ function FcvModel(p) {
     mSelf.Journey = checkValue(o.Journey, "");
 
     Object.defineProperty(mSelf, 'Description', {
-        enumerable: true,
         get: function() {
             return [
                 this.Line,

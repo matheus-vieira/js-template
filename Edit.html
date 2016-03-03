@@ -15,14 +15,14 @@
     <p>
     <label>
       Veículo:
-      <select autofocus="autofocus">
+      <select autofocus="autofocus" id="drpVehicles">
         <option value="-1">Selecione</option>
         {selectVehicles}
       </select>
     </label>
     </p>
     <p>
-      <input type="submit" value="salvar"/>
+      <button type="button" id="btnSubmit">Alterar</button>
       <a href="Index.html">retornar</a>
     </p>
   </script>
@@ -32,14 +32,15 @@
   <form action="#" id="edit" class="center">
   </form>
 
-  <script src="js/helper/checkValue.js"></script>
-  <script src="js/helper/getTemplate.js"></script>
-  <script src="js/helper/supplant.js"></script>
-  <script src="js/helper/UrlParams.js"></script>
-  <script src="js/Model/ModelBase.js"></script>
-  <script src="js/Model/FcvModel.js"></script>
-  <script src="js/Model/VehicleModel.js"></script>
-  <script src="js/View/painelDeFrotas/edit/EditUrlParams.js"></script>
-  <script src="js/View/painelDeFrotas/edit/onload.js"></script>
+  <script type="text/javascript" src="js/helper/checkValue.js"></script>
+  <script type="text/javascript" src="js/helper/getTemplate.js"></script>
+  <script type="text/javascript" src="js/helper/supplant.js"></script>
+  <script type="text/javascript" src="js/helper/UrlParams.js"></script>
+  <script type="text/javascript" src="js/Model/ModelBase.js"></script>
+  <script type="text/javascript" src="js/Model/FcvModel.js"></script>
+  <script type="text/javascript" src="js/Model/VehicleModel.js"></script>
+  <script type="text/javascript" src="js/Controller/painelDeFrotas/edit/FcvChangeVehicleController.js"></script>
+  <script type="text/javascript" src="js/View/painelDeFrotas/edit/EditUrlParams.js"></script>
+  <script type="text/javascript" src="js/View/painelDeFrotas/edit/onload.js"></script>
 </body>
 </html>

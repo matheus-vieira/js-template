@@ -7,16 +7,32 @@
         tplVehicle = d.getTemplate("tpl-vehicle");
 
     function render() {
-        var lista = "";
+        var lista = "",
+            btnSubmit = null,
+            drpVehicles = null;
 
         vehicles.forEach(function (vehicle) {
             lista += tplVehicle.supplant(vehicle);
         });
         
-        tplFcv = tplFcv.supplant(fcv);
-        tplFcv = tplFcv.supplant({ selectVehicles: lista });
+        tplFcv = tplFcv.supplant(
+            // add the new property to an temporary object
+            Object.create(fcv, {
+                selectVehicles: { value: lista }
+            })
+        );
         
         holder.innerHTML = tplFcv;
+
+        drpVehicles = d.getElementById("drpVehicles");
+
+        btnSubmit = d.getElementById("btnSubmit");
+        btnSubmit.addEventListener("click", function (evt) {
+            var vehicleId = +drpVehicles.value;
+            if(vehicleId && vehicleId > 0) {
+                fcv.changeVehicle(vehicleId);
+            }
+        });
     }
 
     function init() {
@@ -31,6 +47,7 @@
             Table: "T" + pageParams.fcvId,
             Journey: "J" + pageParams.fcvId
         });
+        console.log("Original fcv object:", JSON.stringify(fcv));
         
         for (i = 1; i < 1001; i++) {
             vehicle = new VehicleModel({
