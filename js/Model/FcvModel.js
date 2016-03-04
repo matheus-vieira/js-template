@@ -19,7 +19,7 @@ function FcvModel(p) {
                 this.Line,
                 this.Table,
                 this.Journey
-            ].join(" / ") + " - " + this.Name;
+            ].join(" / ") + " — " + this.Name;
         }
     });
 }

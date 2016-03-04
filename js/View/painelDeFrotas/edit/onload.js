@@ -2,9 +2,15 @@
     "use strict";
     var vehicles = [],
         fcv = null,
-        holder = d.getElementById("edit"),
-        tplFcv = d.getTemplate("tpl-fcv"),
+        holder = null,
+        tplFcv = null,
+        tplVehicle = null;
+
+    function getDomElements() {
+        holder = d.getElementById("edit");
+        tplFcv = d.getTemplate("tpl-fcv");
         tplVehicle = d.getTemplate("tpl-vehicle");
+    }
 
     function render() {
         var lista = "",
@@ -32,7 +38,7 @@
             if(vehicleId && vehicleId > 0) {
                 fcv.changeVehicle(vehicleId);
             }
-        });
+        }, false);
     }
 
     function init() {
@@ -48,7 +54,7 @@
             Journey: "J" + pageParams.fcvId
         });
         console.log("Original fcv object:", JSON.stringify(fcv));
-        
+
         for (i = 1; i < 1001; i++) {
             vehicle = new VehicleModel({
                 Id: i,
@@ -59,6 +65,7 @@
     }
 
     w.onload = function onLoad() {
+        getDomElements();
         init();
         render();
     };

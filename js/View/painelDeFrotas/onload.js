@@ -1,9 +1,17 @@
 (function (w, d) {
     "use strict";
     var fcvList = [],
-        tplFcv = d.getTemplate("tpl-fcv"),
-        holder = d.getElementById("fcvs"),
+        tplFcv = null,
+        holder = null,
+        btnFilter = null,
+        txtDescFilter = null;
+
+    function getDomElements() {
+        tplFcv = d.getTemplate("tpl-fcv");
+        holder = d.getElementById("fcvs");
+        btnFilter = d.getElementById("btnFilter");
         txtDescFilter = d.getElementById("txtDescFilter");
+    }
 
     function render() {
         var parsedTpl = "",
@@ -35,9 +43,14 @@
             });
             fcvList.push(model);
         }
+
+        btnFilter.addEventListener("click", function (evt) {
+            render();
+        }, false);
     }
 
     w.onload = function onLoad() {
+        getDomElements();
         init();
         render();
     };
