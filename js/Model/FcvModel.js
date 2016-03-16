@@ -4,22 +4,18 @@ function FcvModel(p) {
         o = checkValue(p, {});
 
     // inherit instance properties
-    ModelBase.apply(this, o);
-
-    mSelf.Id = checkValue(o.Id, -1);
-
-    mSelf.Name = checkValue(o.Name, "");
-    mSelf.Line = checkValue(o.Line, "");
-    mSelf.Table = checkValue(o.Table, "");
-    mSelf.Journey = checkValue(o.Journey, "");
+    ModelBase.call(mSelf, o);
 
     Object.defineProperty(mSelf, 'Description', {
         get: function() {
-            return [
-                this.Line,
-                this.Table,
-                this.Journey
-            ].join(" / ") + " — " + this.Name;
+            var builder = [];
+
+            // properties that aren't required
+            mSelf.Line && builder.push(mSelf.Line);
+            mSelf.Table && builder.push(mSelf.Table);
+            mSelf.Journey && builder.push(mSelf.Journey);
+
+            return builder.join(" / ") + " — " + mSelf.Name;
         }
     });
 }

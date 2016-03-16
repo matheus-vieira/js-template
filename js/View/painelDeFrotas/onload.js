@@ -32,15 +32,19 @@
 
     function init() {
         var i,
+            data,
             model;
         for (i = 1; i < 1001; i++) {
-            model = new FcvModel({
-                Id: i,
-                Name: "Descricao " + i,
-                Line: "L" + i,
-                Table: "T" + i,
-                Journey: "J" + i
-            });
+            data = {};
+            data.Id = i;
+            data.Name = "Descricao " + i;
+            data.Line = "L" + i;
+            data.Table = "T" + i;
+
+            // Simulate missing properties
+            if (i % 10) data.Journey = "J" + i;
+
+            model = new FcvModel(data);
             fcvList.push(model);
         }
 
