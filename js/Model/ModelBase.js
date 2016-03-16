@@ -3,11 +3,7 @@ function ModelBase(p) {
     var mSelf = this,
         o = checkValue(p, {});
     
-    mSelf.Visible = checkValue(o.Visible, "");
+    mSelf.Visible = checkValue(o.Visible, true);
 
-    for (var prop in o) {
-        if(p.hasOwnProperty(prop)) {
-            mSelf[prop] = checkValue(p[prop], "");
-        }
-    }
+    Object.assign(mSelf, p);
 }
