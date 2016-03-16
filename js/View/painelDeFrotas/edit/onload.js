@@ -20,9 +20,10 @@
         vehicles.forEach(function (vehicle) {
             lista += tplVehicle.supplant(vehicle);
         });
-        
+
         tplFcv = tplFcv.supplant(
-            // add the new property to an temporary object
+            // create a new object based on fcv
+            // with another property
             Object.create(fcv, {
                 selectVehicles: { value: lista }
             })
@@ -34,10 +35,7 @@
 
         btnSubmit = d.getElementById("btnSubmit");
         btnSubmit.addEventListener("click", function (evt) {
-            var vehicleId = +drpVehicles.value;
-            if(vehicleId && vehicleId > 0) {
-                fcv.changeVehicle(vehicleId);
-            }
+            fcv.changeVehicle(+drpVehicles.value);
         }, false);
     }
 
