@@ -2,41 +2,30 @@
     "use strict";
     var vehicles = [],
         fcv = null,
-        holder = null,
-        tplFcv = null,
-        tplVehicle = null;
+        btnSubmit = null,
+        tplVehicle = null,
+        holderFcvDesc = null,
+        holderdrpVehicles = null;
 
     function getDomElements() {
-        holder = d.getElementById("edit");
-        tplFcv = d.getTemplate("tpl-fcv");
+        btnSubmit = d.getElementById("btnSubmit");
+
         tplVehicle = d.getTemplate("tpl-vehicle");
+
+        holderFcvDesc = d.getElementById("spnFcvDesc");
+        holderdrpVehicles = d.getElementById("drpVehicles");
     }
 
     function render() {
-        var lista = "",
-            btnSubmit = null,
-            drpVehicles = null;
+        var tplList = "";
+
+        holderFcvDesc.innerHTML = fcv.Description;
 
         vehicles.forEach(function (vehicle) {
-            lista += tplVehicle.supplant(vehicle);
+            tplList += tplVehicle.supplant(vehicle);
         });
 
-        tplFcv = tplFcv.supplant(
-            // create a new object based on fcv
-            // with another property
-            Object.create(fcv, {
-                selectVehicles: { value: lista }
-            })
-        );
-        
-        holder.innerHTML = tplFcv;
-
-        drpVehicles = d.getElementById("drpVehicles");
-
-        btnSubmit = d.getElementById("btnSubmit");
-        btnSubmit.addEventListener("click", function (evt) {
-            fcv.changeVehicle(+drpVehicles.value);
-        }, false);
+        drpVehicles.innerHTML += tplList;
     }
 
     function init() {
@@ -60,6 +49,10 @@
             });
             vehicles.push(vehicle);
         }
+
+        btnSubmit.addEventListener("click", function (evt) {
+            fcv.changeVehicle(+drpVehicles.value);
+        }, false);
     }
 
     w.onload = function onLoad() {
