@@ -34,7 +34,7 @@
         var i,
             data,
             model;
-        for (i = 1; i < 1001; i++) {
+        for (i = 1; i < 100001; i++) {
             data = {};
             data.Id = i;
             data.Name = "Descricao " + i;
