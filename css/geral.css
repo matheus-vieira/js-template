@@ -3,5 +3,11 @@
 }
 
 ol {
-  display: inline-block;
+  -moz-column-count: 3;
+  -moz-column-gap: 100px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 100px;
+  column-count: 3;
+  column-gap: 100px;
+  text-align: right;
 }
