@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="css/geral.css" rel="stylesheet">
+</head>
+
+<body>
+  <script type="text/html" id="tpl-fcv">
+    <li>
+      <label>
+        <span>{Description}</span>
+      </label>
+      <a href="vehicle/edit.html?fcvId={Id}">Avulsa</a>
+    </li>
+  </script>
+  <div class="center">
+    <form action="#">
+      <label>Filtrar: <input type="search" id="txtDescFilter" autofocus="autofocus" autocomplete="on" /></label>
+      <button type="submit" id="btnFilter">Filtrar</button>
+    </form>
+    <ol id="fcvs"></ol>
+  </div>
+  <script type="text/javascript" src="js/helper/assign.js"></script>
+  <script type="text/javascript" src="js/helper/regexFilter.js"></script>
+  <script type="text/javascript" src="js/helper/valueOrDefault.js"></script>
+  <script type="text/javascript" src="js/helper/getTemplate.js"></script>
+  <script type="text/javascript" src="js/helper/supplant.js"></script>
+  <script type="text/javascript" src="js/Model/ModelBase.js"></script>
+  <script type="text/javascript" src="js/Model/FcvModel.js"></script>
+  <script type="text/javascript" src="js/Controller/painelDeFrotas/FcvFilterController.js"></script>
+  <script type="text/javascript" src="js/View/painelDeFrotas/onload.js"></script>
+</body>
+
+</html>
