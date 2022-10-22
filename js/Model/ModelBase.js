@@ -1,28 +1,34 @@
+/**
+ * Base model for object creation
+ * @param {object} p An object with the properties
+ */
 function ModelBase(p) {
-    "use strict";
-    var mSelf = this,
-        o = checkValue(p, {});
-    
-    mSelf.Visible = checkValue(o.Visible, true);
+  "use strict";
+  var mSelf = this,
+    o = valueOrDefault(p, {});
 
-    mSelf.request = new AjaxRequest();
+  mSelf.Visible = valueOrDefault(o.Visible, true);
 
-    Object.assign(mSelf, p);
+  mSelf.request = new AjaxRequest();
+
+  Object.assign(mSelf, p);
 }
 
-function AjaxRequest() {
-    var timeout = (function (callback) {
-        return window.setTimeout(function () {
-            callback();
-        }, 1000);
-    });
+class AjaxRequest {
+  constructor() {
+    var timeout = function (callback) {
+      return window.setTimeout(function () {
+        callback();
+      }, 1000);
+    };
     this.get = function (url, callback) {
-        timeout(callback);
+      timeout(callback);
     };
     this.post = function (url, data, callback) {
-        timeout(callback);
+      timeout(() => callback(data));
     };
     this.delete = function (url, data, callback) {
-        timeout(callback);
+      timeout(callback);
     };
+  }
 }

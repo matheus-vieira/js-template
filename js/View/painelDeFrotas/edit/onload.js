@@ -5,15 +5,13 @@
         btnSubmit = null,
         tplVehicle = null,
         holderFcvDesc = null,
-        holderdrpVehicles = null;
+        drpVehicles = null;
 
     function getDomElements() {
         btnSubmit = d.getElementById("btnSubmit");
-
         tplVehicle = d.getTemplate("tpl-vehicle");
-
         holderFcvDesc = d.getElementById("spnFcvDesc");
-        holderdrpVehicles = d.getElementById("drpVehicles");
+        drpVehicles = d.getElementById("drpVehicles");
     }
 
     function render() {
@@ -35,7 +33,7 @@
 
         fcv = new FcvModel({
             Id: pageParams.fcvId,
-            Name: "Descricao " + pageParams.fcvId,
+            Name: "Descrição " + pageParams.fcvId,
             Line: "L" + pageParams.fcvId,
             Table: "T" + pageParams.fcvId,
             Journey: "J" + pageParams.fcvId

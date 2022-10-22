@@ -1,61 +1,64 @@
 (function (w, d) {
-    "use strict";
-    var fcvList = [],
-        tplFcv = null,
-        holder = null,
-        btnFilter = null,
-        txtDescFilter = null;
+  "use strict";
+  let fcvList = [],
+    tplFcv = null,
+    holder = null,
+    btnFilter = null,
+    txtDescFilter = null;
 
-    function getDomElements() {
-        tplFcv = d.getTemplate("tpl-fcv");
-        holder = d.getElementById("fcvs");
-        btnFilter = d.getElementById("btnFilter");
-        txtDescFilter = d.getElementById("txtDescFilter");
+  function getDomElements() {
+    tplFcv = d.getTemplate("tpl-fcv");
+    holder = d.getElementById("fcvs");
+    btnFilter = d.getElementById("btnFilter");
+    txtDescFilter = d.getElementById("txtDescFilter");
+  }
+
+  function render() {
+    let parsedTpl = "",
+      descFilter = "";
+
+    if (txtDescFilter && txtDescFilter.value) {
+      descFilter = txtDescFilter.value;
     }
 
-    function render() {
-        var parsedTpl = "",
-            descFilter = "";
+    fcvList.forEach(function (ltj) {
+      const matchFilter = ltj.filterBy(descFilter, "Description");
+      if (matchFilter) {
+        parsedTpl += tplFcv.supplant(ltj);
+      }
+    });
 
-        if (txtDescFilter && txtDescFilter.value) {
-            descFilter = txtDescFilter.value;
-        }
+    holder.innerHTML = parsedTpl;
+  }
 
-        fcvList.forEach(function (ltj) {
-            if (ltj.filterBy(descFilter, 'Description')) {
-                parsedTpl += tplFcv.supplant(ltj);
-            }
-        });
+  function init() {
+    for (let i = 1; i < 1001; i++) {
+      let data = {};
+      data.Id = i;
+      data.Name = "Descrição " + i;
+      data.Line = "L" + i;
+      data.Table = "T" + i;
 
-        holder.innerHTML = parsedTpl;
+      // Simulate missing properties
+      if (Math.random() >= 0.5) data.Journey = "J" + i;
+
+      let model = new FcvModel(data);
+      fcvList.push(model);
     }
 
-    function init() {
-        var i,
-            data,
-            model;
-        for (i = 1; i < 100001; i++) {
-            data = {};
-            data.Id = i;
-            data.Name = "Descricao " + i;
-            data.Line = "L" + i;
-            data.Table = "T" + i;
-
-            // Simulate missing properties
-            if (i % 10) data.Journey = "J" + i;
-
-            model = new FcvModel(data);
-            fcvList.push(model);
-        }
-
-        btnFilter.addEventListener("click", function (evt) {
-            render();
-        }, false);
-    }
-
-    w.onload = function onLoad() {
-        getDomElements();
-        init();
+    btnFilter.addEventListener(
+      "click",
+      function (evt) {
         render();
-    };
-}(window, document));
+        return false;
+      },
+      false
+    );
+  }
+
+  w.onload = function onLoad() {
+    getDomElements();
+    init();
+    render();
+  };
+})(window, document);

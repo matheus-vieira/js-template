@@ -1,9 +1,9 @@
-FcvModel.prototype.filterBy = function (strFilter, propToFilter) {
-    var regex;
-    try {
-        regex = new RegExp(strFilter,"gi");
-        return regex.test(this[propToFilter]);
-    } catch (e) {
-        return false;
-    }
-};
+// This is a function only used on a specific page
+// The idea here is to have a lightweight object
+// And append functions/properties only when necessary
+// This is the reason to append through prototype
+// Instead of a function in the object itself
+/**
+ * Filter a fcv using a smart regex function
+ */
+FcvModel.prototype.filterBy = regexFilter;

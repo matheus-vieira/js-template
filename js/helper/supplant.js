@@ -7,6 +7,12 @@
 * Written by Douglas Crockford
 * http://www.crockford.com/
 */
+/**
+ * Replace a placeholder with the value of an object
+ * If the property is not found, keeps the placeholder
+ * @param {string} o the property name to be found on the object
+ * @returns string
+ */
 String.prototype.supplant = function (o) {
 	return this.replace(
 		/{([^{}]*)}/g, 
